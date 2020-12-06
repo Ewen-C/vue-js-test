@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Vue.js</title>
+    <!-- Import Styles -->
+    <link rel="stylesheet" href="./assets/styles.css" />
+    <!-- Import Vue.js -->
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    
+    <div id="app">
+      <div class="nav-bar-top"></div>
+
+      <div class="cart"> 
+        <p v-if="cart.length == 0"> Cart ( Empty ) </p>
+        <p v-else > Cart ({{ cart.length }}) </p>
+      </div>
+      
+
+      <product-display 
+        :premium="premium" 
+        :cart="cart"
+        @add-to-cart="AddCart"
+        @remove-from-cart="RemoveCart"
+        >
+      </product-display>
+      <!-- PAS DE PARENTHESES APRES LES NOMS DE METHODES ! -->
+      <!-- SINON LES ARGUMENTS NE SONT PAS PRIS EN COMPTE -->
+
+      <div class="nav-bar-bottom"></div>
+    </div>
+
+
+    <!-- Import Vue App -->
+    <script src="./main.js"></script>
+
+    <!-- Import Components -->
+    <script src="./components/ProductDisplay.js"></script>
+    <script src="./components/ReviewList.js"></script>
+    <script src="./components/ReviewForm.js"></script>
+    
+    <!-- Mount App -->
+    <script>
+      const mountedApp = app.mount('#app') // The imported app of Vue in the .js file go inside of the id #app
+    </script>
+
+  </body>
+</html>
